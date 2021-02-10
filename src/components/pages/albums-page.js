@@ -1,7 +1,10 @@
 import React from "react";
+import AlbumsList from "../albums-list";
 
 const AlbumsPage = () => {
-  return <div>Albums Page</div>;
+  return (
+    <AlbumsList />
+  )
 };
 
 export default AlbumsPage;

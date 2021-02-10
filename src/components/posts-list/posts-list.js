@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withJsonService } from "../hoc";
 
-const UsersList = ({ jsonService }) => {
+const PostsList = ({ jsonService }) => {
   const [postsArray, setPostsArray] = useState([]);
 
   useEffect(() => {
@@ -24,4 +24,4 @@ const UsersList = ({ jsonService }) => {
   );
 };
 
-export default withJsonService()(UsersList);
+export default withJsonService()(PostsList);
