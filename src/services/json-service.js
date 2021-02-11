@@ -35,6 +35,11 @@ export default class JsonService {
     return this._transformUser(user);
   }
 
+  async getAlbumPhotos(id) {
+    const res = await this.getResource(`/albums/${id}/photos`);
+    return res.map(this._transformPhoto)
+  }
+
   _transformUser(user) {
     return {
       id: user.id,
@@ -53,7 +58,7 @@ export default class JsonService {
       id: post.id,
       userId: post.userId,
       title: post.title,
-      body: post.body
+      body: post.body,
     };
   }
 
@@ -65,13 +70,13 @@ export default class JsonService {
     };
   }
 
-  _transformPhoto(photo) {
+  _transformPhoto(album) {
     return {
-      id: photo.id,
-      albumId: photo.albumId,
-      title: photo.title,
-      url: photo.url,
-      thumbnailUrl: photo.thumbnailUrl,
+      id: album.id,
+      albumId: album.albumId,
+      title: album.title,
+      url: album.url,
+      thumbnailUrl: album.thumbnailUrl,
     };
   }
 }

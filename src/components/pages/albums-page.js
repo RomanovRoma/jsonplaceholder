@@ -1,10 +1,17 @@
 import React from "react";
 import AlbumsList from "../albums-list";
+import { withRouter } from 'react-router-dom'
 
-const AlbumsPage = () => {
+const AlbumsPage = (props) => {
   return (
-    <AlbumsList />
-  )
+    <div>
+      <AlbumsList
+        onAlbumSelected={(id) => {
+          props.history.push(`/albums/${id}/photos`);
+        }}
+      />
+    </div>
+  );
 };
 
-export default AlbumsPage;
+export default withRouter(AlbumsPage)

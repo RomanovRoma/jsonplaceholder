@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from "react";
+import { useStateIfMounted } from "use-state-if-mounted";
 import { withJsonService } from '../hoc';
 
-const UsersList = ({jsonService}) => {
+const UsersList = (props) => {
 
-  const [usersArray, setUsersArray] = useState([]);
+  const [usersArray, setUsersArray] = useStateIfMounted([]);
 
   useEffect(() => {
-    jsonService.getAllUsers().then((usersArray) => {
+    props.jsonService.getAllUsers().then((usersArray) => {
       setUsersArray(usersArray)
     })
-  })
+  }, [])
 
   return (
     <div>
       {usersArray.map((user) => {
-        return <li key={user.id}>{user.name}</li>;
+        return <li key={user.name}>{user.name}</li>;
       })}
     </div>
   )

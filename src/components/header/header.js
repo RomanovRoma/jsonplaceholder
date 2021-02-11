@@ -7,15 +7,15 @@ const Header = () => (
     <nav>
       <ul className="nav">
         <li>
-          <NavLink exact to="/">
+          <NavLink exact to="/" replace>
             Users
           </NavLink>
         </li>
         <li>
-          <NavLink to="/posts">Posts</NavLink>
+          <NavLink to="/posts" replace>Posts</NavLink>
         </li>
         <li>
-          <NavLink to="/albums">Albums</NavLink>
+          <NavLink to="/albums" replace>Albums</NavLink>
         </li>
       </ul>
     </nav>

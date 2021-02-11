@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useStateIfMounted } from "use-state-if-mounted";
 import { withJsonService } from "../hoc";
 
 const PostsList = ({ jsonService }) => {
-  const [postsArray, setPostsArray] = useState([]);
+  const [postsArray, setPostsArray] = useStateIfMounted([]);
 
   useEffect(() => {
     jsonService.getAllPosts().then((postsArray) => {
       setPostsArray(postsArray);
     });
-  });
+  }, []);
 
   return (
     <div>
       {postsArray.map((post) => {
         return (
-          <ul>
-            <li key={post.id}>{post.title}</li>
-            <li key={post.id}>{post.body}</li>
+          <ul key={post.id}>
+            <li >{post.title}</li>
           </ul>
         );
       })}
