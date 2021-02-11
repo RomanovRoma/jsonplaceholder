@@ -38,7 +38,9 @@ const PostsList = (props) => {
                 </ol>
               );
             })
-          : null}
+          : (
+            <Spinner />
+          )}
       </div>
     </section>
   );
