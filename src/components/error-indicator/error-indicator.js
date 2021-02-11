@@ -12,7 +12,7 @@ const ErrorIndicator = () => {
             <div className="mb-4 lead">
               The page you are looking for was not found.
             </div>
-            <Link href="/jsonplaceholder/" className="btn btn-link" replace>
+            <Link href="/jsonplaceholder/" className="btn btn-link">
               Back to Home
             </Link>
           </div>
