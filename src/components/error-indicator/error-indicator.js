@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./error-indicator.css";
 
 const ErrorIndicator = () => {
@@ -11,9 +12,9 @@ const ErrorIndicator = () => {
             <div className="mb-4 lead">
               The page you are looking for was not found.
             </div>
-            <a href="/" className="btn btn-link">
+            <Link href="/" className="btn btn-link" replace>
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </div>
