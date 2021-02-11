@@ -3,6 +3,8 @@ import { useStateIfMounted } from "use-state-if-mounted";
 import { withJsonService } from "../hoc";
 import Spinner from "../spinner";
 
+import './album-photos.css'
+
 const AlbumPhotos = (props) => {
   const [albumPhotosArray, setAlbumPhotosArray] = useStateIfMounted([]);
   const {jsonService, id} = props
@@ -17,16 +19,20 @@ const AlbumPhotos = (props) => {
     <div>
       {albumPhotosArray.length > 0 ? (
         albumPhotosArray.map((photo) => {
-        return (
-          <div key={photo.id}>
-            <img src={photo.thumbnailUrl} alt={photo.title} />
-          </div>
-        );
-      })) : (
+          return (
+            <div
+              key={photo.id}
+              className="cards"
+            >
+              <img src={photo.thumbnailUrl} alt={photo.title} />
+            </div>
+          );
+        })
+      ) : (
         <Spinner />
       )}
     </div>
-  )
+  );
 };
 
 export default withJsonService()(AlbumPhotos);
