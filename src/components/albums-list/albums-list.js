@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useStateIfMounted } from "use-state-if-mounted";
 import { withJsonService } from "../hoc";
+import Spinner from "../spinner";
 
 const AlbumsList = (props) => {
   const [albumsArray, setAlbumsArray] = useStateIfMounted([]);
@@ -14,13 +15,16 @@ const AlbumsList = (props) => {
 
   return (
     <div>
-      {albumsArray.map((album) => {
+      {albumsArray.length > 0 ? (
+        albumsArray.map((album) => {
         return (
           <li key={album.title} onClick={() => props.onAlbumSelected(album.id)}>
             <Link to={`/albums/${album.id}/photos`} replace>{album.title}</Link>
           </li>
         );
-      })}
+      })) : (
+        <Spinner />
+      )}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useStateIfMounted } from "use-state-if-mounted";
 import { withJsonService } from "../hoc";
+import Spinner from "../spinner";
 
 const AlbumPhotos = (props) => {
   const [albumPhotosArray, setAlbumPhotosArray] = useStateIfMounted([]);
@@ -14,13 +15,16 @@ const AlbumPhotos = (props) => {
   // debugger
   return (
     <div>
-      {albumPhotosArray.map((photo) => {
+      {albumPhotosArray.length > 0 ? (
+        albumPhotosArray.map((photo) => {
         return (
           <div>
-            <img src={photo.url} alt={photo.title}/>
+            <img src={photo.thumbnailUrl} alt={photo.title} />
           </div>
         );
-      })}
+      })) : (
+        <Spinner />
+      )}
     </div>
   )
 };

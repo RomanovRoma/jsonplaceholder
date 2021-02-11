@@ -1,26 +1,46 @@
 import React, { useEffect } from "react";
 import { useStateIfMounted } from "use-state-if-mounted";
 import { withJsonService } from "../hoc";
+import Spinner from "../spinner";
 
-const PostsList = ({ jsonService }) => {
-  const [postsArray, setPostsArray] = useStateIfMounted([]);
+const PostsList = (props) => {
+  const [posts, setPosts] = useStateIfMounted()
+  const [addedPost, setAddedPost] = useStateIfMounted()
+  const [addedId, setAddedId] = useStateIfMounted()
 
   useEffect(() => {
-    jsonService.getAllPosts().then((postsArray) => {
-      setPostsArray(postsArray);
+    props.jsonService.getAllPosts().then((data) => {
+      setPosts(data);
     });
   }, []);
 
   return (
-    <div>
-      {postsArray.map((post) => {
-        return (
-          <ul key={post.id}>
-            <li >{post.title}</li>
-          </ul>
-        );
-      })}
-    </div>
+    <section className="card text-center m-3">
+      <input
+        type="text"
+        className="form-control"
+        onChange={(e) => setAddedPost({ title: e.target.value })}
+      />
+      <button
+        id="submit-button"
+        type="submit"
+        className="btn btn-primary"
+        onClick={() => setPosts([...posts, addedPost])}
+      >
+        Add post
+      </button>
+      <div className="card text-left m-3">
+        {posts
+          ? posts.map((post, index) => {
+              return (
+                <ol key={index + 1} start={index + 1}>
+                  <li>{post.title}</li>
+                </ol>
+              );
+            })
+          : null}
+      </div>
+    </section>
   );
 };
 
