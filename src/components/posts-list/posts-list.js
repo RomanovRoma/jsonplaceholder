@@ -6,7 +6,6 @@ import Spinner from "../spinner";
 const PostsList = (props) => {
   const [posts, setPosts] = useStateIfMounted()
   const [addedPost, setAddedPost] = useStateIfMounted()
-  const [addedId, setAddedId] = useStateIfMounted()
 
   useEffect(() => {
     props.jsonService.getAllPosts().then((data) => {

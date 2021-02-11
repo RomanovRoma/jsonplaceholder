@@ -12,13 +12,13 @@ const AlbumPhotos = (props) => {
       setAlbumPhotosArray(albumPhotosArray);
     });
   }, []);
-  // debugger
+
   return (
     <div>
       {albumPhotosArray.length > 0 ? (
         albumPhotosArray.map((photo) => {
         return (
-          <div>
+          <div key={photo.id}>
             <img src={photo.thumbnailUrl} alt={photo.title} />
           </div>
         );

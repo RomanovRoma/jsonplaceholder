@@ -18,7 +18,7 @@ const AlbumsList = (props) => {
       {albumsArray.length > 0 ? (
         albumsArray.map((album) => {
         return (
-          <li key={album.title} onClick={() => props.onAlbumSelected(album.id)}>
+          <li key={album.title}>
             <Link to={`/albums/${album.id}/photos`} replace>{album.title}</Link>
           </li>
         );
