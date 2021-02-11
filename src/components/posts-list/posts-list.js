@@ -14,34 +14,37 @@ const PostsList = (props) => {
   }, []);
 
   return (
-    <section className="card text-center m-3">
-      <input
-        type="text"
-        className="form-control"
-        onChange={(e) => setAddedPost({ title: e.target.value })}
-      />
-      <button
-        id="submit-button"
-        type="submit"
-        className="btn btn-primary"
-        onClick={() => setPosts([...posts, addedPost])}
-      >
-        Add post
-      </button>
-      <div className="card text-left m-3">
-        {posts
-          ? posts.map((post, index) => {
-              return (
-                <ol key={index + 1} start={index + 1}>
-                  <li>{post.title}</li>
-                </ol>
-              );
-            })
-          : (
-            <Spinner />
-          )}
+    <div>
+      <section>
+        <input
+          type="text"
+          placeholder="add post"
+          className="form-control"
+          onChange={(e) => setAddedPost({ title: e.target.value })}
+        />
+        <button
+          id="submit-button"
+          type="submit"
+          className="btn btn-primary"
+          onClick={() => setPosts([...posts, addedPost])}
+        >
+          Add post
+        </button>
+      </section>
+      <div className="text-left m-3">
+        {posts ? (
+          posts.map((post, index) => {
+            return (
+              <ol key={index + 1} start={index + 1}>
+                <li>{post.title}</li>
+              </ol>
+            );
+          })
+        ) : (
+          <Spinner />
+        )}
       </div>
-    </section>
+    </div>
   );
 };
 

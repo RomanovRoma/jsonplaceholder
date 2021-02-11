@@ -14,15 +14,18 @@ const AlbumsList = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="text-left m-3">
       {albumsArray.length > 0 ? (
         albumsArray.map((album) => {
-        return (
-          <li key={album.title}>
-            <Link to={`/albums/${album.id}/photos`} replace>{album.title}</Link>
-          </li>
-        );
-      })) : (
+          return (
+            <li key={album.title}>
+              <Link to={`/albums/${album.id}/photos`} replace>
+                {album.title}
+              </Link>
+            </li>
+          );
+        })
+      ) : (
         <Spinner />
       )}
     </div>

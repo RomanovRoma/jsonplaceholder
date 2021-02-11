@@ -14,11 +14,11 @@ const UsersList = (props) => {
   }, [])
 
   return (
-    <div>
+    <div className="text-left m-3">
       {usersArray.length > 0 ? (
         usersArray.map((user) => {
-        return <li key={user.name}>{user.name}</li>
-      })
+          return <li key={user.name}>{user.name}</li>;
+        })
       ) : (
         <Spinner />
       )}

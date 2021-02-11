@@ -3,7 +3,7 @@
   background-color: #28d4d4;
   display: flex;
   align-items: stretch;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 0 50px;
   box-shadow: 1px 1px 10px #777;
 }
@@ -20,6 +20,7 @@
 .nav li {
   display: flex;
   align-items: center;
+  font-size: larger;
 }
 
 .nav a {
